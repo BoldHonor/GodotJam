@@ -2,7 +2,7 @@ shader_type canvas_item;
 render_mode unshaded;
 
 uniform int blurSize : hint_range(0,45) = 35;
-uniform sampler2D tex_frg_2;
+
 
 void fragment() {
 	// this blur depends on the zoom of the screen, so not perfect for getting the right results all the time
@@ -10,7 +10,7 @@ void fragment() {
 	
 	float alpha = 1.0;
 	vec3 color = texture(TEXTURE, UV).rgb;
-	vec3 color2 = texture(tex_frg_2, UV).rgb;
+	
 	float average = (COLOR.r + COLOR.g + COLOR.b) / 3.0;
 	// outside of everything, no balls
 	// set alpha to 0.0 to set a sharp outer edge
@@ -30,6 +30,9 @@ void fragment() {
 	// color starts at full white (r/g/b = 1.0), so we can reduce channels to get color
 	if(average > 0.4) {
 		//color =color2
+		color.r = 0.3;
+		color.g = 0.6;
+		color.b = 0.8;
 	}
 	COLOR = vec4(color, alpha);
 }
