@@ -4,7 +4,7 @@ extends Node2D
 #predefines 
 export (float) var POWER_RATIO =0.5
 export (float) var MIN_SCALE = 0.6
-export (float) var GROWTH = 1.06
+export (float) var GROWTH = 200
 
 export (float) var MAX_SCALE = 0.9
 export (float) var MIN_SCALE_LIMIT = 0.4
@@ -41,7 +41,7 @@ func _process(delta):
 		
 		
 	if Input.is_action_pressed("aim"):
-		charge()	
+		charge(delta)	
 	
 	if (Input.is_action_just_released("aim") && prepare_launch):
 		launch()
@@ -58,13 +58,16 @@ func prepareLaunch(delta =1):
 	prepare_launch =true
 	Projectile = ProjectileScene.instance()
 	FollowNode = MainPlayer.get_node("Node2D")
-	Projectile.scale = Vector2(MIN_SCALE,MIN_SCALE)*FollowNode.scale 
+	Projectile.scale = Vector2(0,0)*FollowNode.scale 
 	FollowNode.get_node("Position2D").add_child(Projectile)
 	Projectile.global_position = FollowNode.get_node("Position2D").global_position
 	pass
 
 func launch():
 	print("Launching")
+	if Projectile.scale.x < MIN_SCALE:
+		Projectile.queue_free()
+		return
 	var launch_power  = (get_global_mouse_position()-initial_point).length() * POWER_RATIO
 	if(previous_player != null):
 		previous_player.collision_layer = 1
@@ -89,8 +92,8 @@ func launch():
 func charge(delta =1 ):
 	if(!prepare_launch || FollowNode == null):
 		return
-	FollowNode.look_at(get_global_mouse_position())
+	FollowNode.look_at((get_global_mouse_position() - initial_point).normalized() + FollowNode.global_position)
 	if(Projectile.scale.x < MAX_SCALE*FollowNode.scale.x):
-		Projectile.scale.x *= GROWTH*delta
-		Projectile.scale.y *= GROWTH*delta
+		Projectile.scale.x += GROWTH*delta
+		Projectile.scale.y += GROWTH*delta
 	pass

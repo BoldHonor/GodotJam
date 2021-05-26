@@ -42,7 +42,6 @@ angular_damp = 39.183
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
-visible = false
 scale = Vector2( 0.3, 0.3 )
 texture = ExtResource( 1 )
 
@@ -61,6 +60,7 @@ position = Vector2( -10.3497, 0.0457139 )
 wait_time = 0.4
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+visible = false
 position = Vector2( 0.735784, 3.88915 )
 scale = Vector2( 0.1, 0.1 )
 frames = SubResource( 3 )

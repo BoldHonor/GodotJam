@@ -1,10 +1,36 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Paltform.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Main scene.gd" type="Script" id=3]
 [ext_resource path="res://Sprites/Character/PostProcrsing/metaball.shader" type="Shader" id=4]
 [ext_resource path="res://Sprites/Character/PostProcrsing/background.png" type="Texture" id=5]
+[ext_resource path="res://Sprites/TileSet/Mossy - TileSet small.png" type="Texture" id=6]
+
+[sub_resource type="TileSet" id=2]
+0/name = "Mossy - TileSet small.png 0"
+0/texture = ExtResource( 6 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 0, 0, 896, 896 )
+0/tile_mode = 1
+0/autotile/bitmask_mode = 0
+0/autotile/bitmask_flags = [ Vector2( 0, 0 ), 256, Vector2( 0, 1 ), 260, Vector2( 0, 2 ), 4, Vector2( 1, 0 ), 320, Vector2( 1, 1 ), 325, Vector2( 1, 2 ), 5, Vector2( 2, 0 ), 64, Vector2( 2, 1 ), 65, Vector2( 2, 2 ), 1 ]
+0/autotile/icon_coordinate = Vector2( 0, 0 )
+0/autotile/tile_size = Vector2( 128, 128 )
+0/autotile/spacing = 0
+0/autotile/occluder_map = [  ]
+0/autotile/navpoly_map = [  ]
+0/autotile/priority_map = [  ]
+0/autotile/z_index_map = [  ]
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape_one_way = false
+0/shape_one_way_margin = 0.0
+0/shapes = [  ]
+0/z_index = 0
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 4 )
@@ -13,8 +39,7 @@ shader_param/blurSize = 31
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 3 )
 POWER_RATIO = 0.8
-GROWTH = 1.03
-MAX_SCALE = 0.8
+GROWTH = 0.331
 MIN_SCALE_LIMIT = 0.6
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
@@ -24,13 +49,24 @@ sleeping = false
 [node name="BackBufferCopy" type="BackBufferCopy" parent="."]
 copy_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="."]
-visible = false
+[node name="TileMap" type="TileMap" parent="."]
+position = Vector2( 60.7352, -54.061 )
+tile_set = SubResource( 2 )
+cell_size = Vector2( 128, 128 )
+format = 1
+tile_data = PoolIntArray( 65537, 0, 0, 65538, 0, 1, 65539, 0, 1, 65540, 0, 1, 65541, 0, 2, 131073, 0, 131072, 131074, 0, 131073, 131075, 0, 131073, 131076, 0, 131073, 131077, 0, 131074 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 504, 304 )
+current = true
+zoom = Vector2( 0.3, 0.3 )
+
+[node name="TextureRect" type="TextureRect" parent="Camera2D"]
 material = SubResource( 1 )
-margin_left = 352.0
-margin_top = 216.0
-margin_right = 656.0
-margin_bottom = 392.0
+margin_left = -152.0
+margin_top = -90.0
+margin_right = 152.0
+margin_bottom = 87.0
 texture = ExtResource( 5 )
 expand = true
 __meta__ = {
@@ -40,8 +76,3 @@ __meta__ = {
 [node name="Paltform" parent="." instance=ExtResource( 1 )]
 position = Vector2( 521.874, 344.611 )
 scale = Vector2( 1.814, 1 )
-
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2( 504, 304 )
-current = true
-zoom = Vector2( 0.3, 0.3 )
