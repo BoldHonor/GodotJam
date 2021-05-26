@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://Paltform.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Tile_set.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Main scene.gd" type="Script" id=3]
 [ext_resource path="res://Sprites/Character/PostProcrsing/metaball.shader" type="Shader" id=4]
@@ -37,11 +37,10 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Paltform" parent="." instance=ExtResource( 1 )]
-position = Vector2( 521.874, 344.611 )
-scale = Vector2( 1.814, 1 )
-
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( 504, 304 )
 current = true
 zoom = Vector2( 0.3, 0.3 )
+
+[node name="Node2D" parent="." instance=ExtResource( 1 )]
+scale = Vector2( 0.6, 0.6 )
