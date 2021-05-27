@@ -17,6 +17,7 @@ var ProjectileScene : PackedScene
 var Projectile : Node2D
 var LeftPlayer : RigidBody2D
 var FollowNode : Node2D
+var retainer_layer : Node2D
 var previous_player : RigidBody2D
 var launch_direction :Vector2
 var prepare_launch : bool = false
@@ -30,6 +31,7 @@ func _ready():
 	MainPlayer = $Player
 	FollowNode = MainPlayer.get_node("Node2D")
 	ProjectileScene = preload("res://Scenes//LaunchSprite.tscn")
+	retainer_layer = $RetainerLayer
 	pass # Replace with function body.
 
 
@@ -66,6 +68,7 @@ func prepareLaunch(delta =1):
 	Projectile.global_position = FollowNode.get_node("Position2D").global_position
 	pass
 
+#launch function------------------------------------------------------------------
 func launch():
 	print("Launching")
 	if Projectile.scale.x *FollowNode.scale.x < MIN_SCALE:
@@ -74,12 +77,16 @@ func launch():
 	
 	previous_player = MainPlayer
 	previous_player.start_timers()
+	
+	
+	#prepare data for launch
 	var launch_power  = POWER_RATIO  * previous_player.mass
 	print("launch power : " + String(launch_power))
 	previous_player.set_process(false)
 	previous_player.set_physics_process(false)
 	MainPlayer = Player.instance()
 	
+	#launching
 	MainPlayer.global_position = Projectile.global_position
 	get_tree().get_root().add_child(MainPlayer)
 	get_tree().get_root().move_child(MainPlayer,0)
@@ -88,10 +95,15 @@ func launch():
 	MainPlayer.apply_central_impulse(impulse_direction * launch_power / MainPlayer.mass)
 	previous_player.apply_central_impulse(-1*impulse_direction * launch_power/ (1.6 -MainPlayer.mass))
 	Projectile.queue_free()
+	
+	#post launch
 	prepare_launch =false
 	$Camera2D.player = MainPlayer
 	get_node("Camera2D/TextureRect").stop_change_color()
+	retainer_layer.add_child(previous_player)
 	pass
+#end launch functon ***********************************************************************************************
+
 
 func charge(delta =1 ):
 	if(!prepare_launch || FollowNode == null):
