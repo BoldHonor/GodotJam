@@ -32,7 +32,7 @@
 0/shapes = [  ]
 0/z_index = 0
 
-[sub_resource type="ShaderMaterial" id=1]
+[sub_resource type="ShaderMaterial" id=3]
 shader = ExtResource( 4 )
 shader_param/blurSize = 31
 
@@ -62,7 +62,7 @@ current = true
 zoom = Vector2( 0.3, 0.3 )
 
 [node name="TextureRect" type="TextureRect" parent="Camera2D"]
-material = SubResource( 1 )
+material = SubResource( 3 )
 margin_left = -152.0
 margin_top = -90.0
 margin_right = 152.0
@@ -73,16 +73,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-<<<<<<< HEAD
 [node name="Paltform" parent="." instance=ExtResource( 1 )]
 position = Vector2( 521.874, 344.611 )
 scale = Vector2( 1.814, 1 )
-=======
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2( 504, 304 )
-current = true
-zoom = Vector2( 0.3, 0.3 )
-
-[node name="Node2D" parent="." instance=ExtResource( 1 )]
-scale = Vector2( 0.6, 0.6 )
->>>>>>> 28c1a94dd5d4592cc8c2f537eaf47ba3944c0e16

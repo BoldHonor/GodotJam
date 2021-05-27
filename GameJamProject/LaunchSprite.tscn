@@ -5,5 +5,5 @@
 [node name="LaunchSprite" type="Node2D"]
 
 [node name="Sprite" type="Sprite" parent="."]
-scale = Vector2( 0.3, 0.3 )
+scale = Vector2( 1.3, 1.3 )
 texture = ExtResource( 1 )
