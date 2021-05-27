@@ -37,8 +37,10 @@ func _physics_process(delta):
 	 
 	
 	var speed = linear_velocity.length()
-	if Input.is_action_just_pressed("ui_up") && can_grow:
+	if Input.is_action_pressed("ui_up") && can_grow &&  can_move && speed < MAX_VELOCITY:
 		print("jump")
+		timer.start()
+		can_move =false
 		apply_central_impulse(JUMP_IMPULSE_FIXED + JUMP_IMPULSE *mass)
 	if Input.is_action_pressed("ui_right") && can_move && speed < MAX_VELOCITY && can_grow:
 		can_move =false
