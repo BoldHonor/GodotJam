@@ -26,10 +26,10 @@ var initial_scale :float
 var initial_point : Vector2
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	Player = preload("res://Player.tscn")
+	Player = preload("res://Scenes//Player.tscn")
 	MainPlayer = $Player
 	FollowNode = MainPlayer.get_node("Node2D")
-	ProjectileScene = preload("res://LaunchSprite.tscn")
+	ProjectileScene = preload("res://Scenes//LaunchSprite.tscn")
 	pass # Replace with function body.
 
 

@@ -11,7 +11,7 @@ config_version=4
 [application]
 
 config/name="GameJamProject"
-run/main_scene="res://Tile_set.tscn"
+run/main_scene="res://Scenes/Tile_set.tscn"
 config/icon="res://icon.png"
 
 [input]

@@ -76,7 +76,7 @@ position = Vector2( 0.735784, 3.88915 )
 scale = Vector2( 0.1, 0.1 )
 frames = SubResource( 6 )
 animation = "Idle"
-frame = 1
+frame = 2
 playing = true
 
 [node name="Area2D" type="Area2D" parent="."]
