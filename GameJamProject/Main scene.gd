@@ -90,6 +90,7 @@ func launch():
 	Projectile.queue_free()
 	prepare_launch =false
 	$Camera2D.player = MainPlayer
+	get_node("Camera2D/TextureRect").stop_change_color()
 	pass
 
 func charge(delta =1 ):
@@ -102,4 +103,6 @@ func charge(delta =1 ):
 		Projectile.scale.y += GROWTH*delta
 		MainPlayer.can_grow=false
 		
+	if Projectile.scale.x *FollowNode.scale.x  > MIN_SCALE:
+		get_node("Camera2D/TextureRect").change_color()
 	pass

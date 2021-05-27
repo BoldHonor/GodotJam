@@ -85,8 +85,8 @@ func gain_mass (delta =1):
 	
 	for i in get_children():
 		if i.get_class() != "Timer":
-			i.scale.x += MASS_GROWTH_RATE*delta
-			i.scale.y += MASS_GROWTH_RATE*delta
+			i.scale.x *= 1+MASS_GROWTH_RATE*delta
+			i.scale.y *= 1+MASS_GROWTH_RATE*delta
 	
 	mass = ref_node.scale.x 
 		
