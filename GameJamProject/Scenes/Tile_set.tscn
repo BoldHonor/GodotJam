@@ -16,7 +16,7 @@ extents = Vector2( 51.8461, 270.657 )
 [node name="Node2D" type="Node2D"]
 
 [node name="Gate-1" parent="." instance=ExtResource( 9 )]
-position = Vector2( 4533.83, -104.498 )
+position = Vector2( 5255.08, -104.498 )
 
 [node name="Gate-4" type="KinematicBody2D" parent="."]
 position = Vector2( -1116.35, -998.008 )
@@ -67,7 +67,6 @@ position = Vector2( -128.874, 111.853 )
 shape = SubResource( 1 )
 
 [node name="Player" parent="." instance=ExtResource( 4 )]
-visible = false
 
 [node name="background" type="TileMap" parent="."]
 tile_set = ExtResource( 3 )
