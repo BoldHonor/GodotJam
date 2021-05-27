@@ -472,7 +472,7 @@ shader_param/blurSize = 45
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 6 )
-POWER_RATIO = 350.0
+POWER_RATIO = 300.0
 MIN_SCALE = 0.4
 GROWTH = 0.502
 MAX_SCALE = 1.3
