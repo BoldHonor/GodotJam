@@ -2,7 +2,8 @@ shader_type canvas_item;
 render_mode unshaded;
 
 uniform int blurSize : hint_range(0,45) = 35;
-uniform vec3 finalColor = vec3(0,0,0);
+uniform vec4 finalColor = vec4(0,0,0,0);
+
 
 
 void fragment() {
@@ -31,7 +32,7 @@ void fragment() {
 	// color starts at full white (r/g/b = 1.0), so we can reduce channels to get color
 	if(average > 0.4) {
 		//color =color2
-		
+		alpha = finalColor.w
 	}
 	COLOR = vec4(color, alpha);
 }

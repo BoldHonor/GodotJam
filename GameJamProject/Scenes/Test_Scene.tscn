@@ -1,0 +1,64 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Main scene.gd" type="Script" id=2]
+[ext_resource path="res://Sprites/Character/PlayerSprites/sime texure.jpg" type="Texture" id=3]
+[ext_resource path="res://Sprites/Character/PostProcrsing/metaball.shader" type="Shader" id=4]
+[ext_resource path="res://Scenes/TextureRect.gd" type="Script" id=5]
+[ext_resource path="res://Camera2D.gd" type="Script" id=6]
+
+[sub_resource type="ShaderMaterial" id=1]
+resource_local_to_scene = true
+shader = ExtResource( 4 )
+shader_param/blurSize = 20
+shader_param/finalColor = Plane( 0.295, 0.321, 0, 0.916 )
+
+[node name="Test_Scene" type="Node2D"]
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_lock_": true
+}
+MIN_SCALE = 0.4
+GROWTH = 1.001
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( -1.41064, -10.8137 )
+
+[node name="BackBufferCopy" type="BackBufferCopy" parent="."]
+process_priority = -1
+z_index = -60
+z_as_relative = false
+copy_mode = 2
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="TextureRect" type="TextureRect" parent="Camera2D"]
+material = SubResource( 1 )
+margin_left = -508.0
+margin_top = -294.0
+margin_right = 508.0
+margin_bottom = 294.0
+texture = ExtResource( 3 )
+expand = true
+stretch_mode = 2
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": true
+}
+
+[node name="Tween" type="Tween" parent="Camera2D/TextureRect"]
+playback_speed = 10.0
+playback/speed = 10.0
+
+[node name="RetainerLayer" type="Node2D" parent="."]
+__meta__ = {
+"_edit_lock_": true
+}
+
+[connection signal="tween_completed" from="Camera2D/TextureRect/Tween" to="Camera2D/TextureRect" method="_on_Tween_tween_completed"]
