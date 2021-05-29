@@ -1,15 +1,15 @@
-extends Camera2D
+extends Node2D
 
 
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
-var player : RigidBody2D
+var player : Node2D
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	player = get_node("../Player")
+	player = get_node("../Player/Node2D")
 	pass # Replace with function body.
 
 

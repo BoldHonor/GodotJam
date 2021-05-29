@@ -102,7 +102,6 @@ mode = 2
 physics_material_override = SubResource( 1 )
 gravity_scale = 10.0
 continuous_cd = 1
-sleeping = true
 angular_damp = 39.183
 script = ExtResource( 2 )
 JUMP_IMPULSE = Vector2( 0, -150 )
@@ -132,8 +131,7 @@ modulate = Color( 0.729412, 0.847059, 0.239216, 1 )
 light_mask = 8192
 frames = SubResource( 2 )
 animation = "New Anim"
-frame = 27
-playing = true
+frame = 23
 
 [node name="Sprite" type="Sprite" parent="."]
 visible = false
@@ -151,7 +149,7 @@ position = Vector2( 8, -40 )
 scale = Vector2( 5, 5 )
 frames = SubResource( 9 )
 animation = "idle"
-frame = 5
+frame = 4
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

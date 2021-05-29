@@ -11,8 +11,14 @@ config_version=4
 [application]
 
 config/name="GameJamProject"
-run/main_scene="res://Scenes/Tile_set.tscn"
+run/main_scene="res://Scenes/TutAfterEffects.tscn"
 config/icon="res://icon.png"
+
+[display]
+
+window/size/width=1920
+window/size/height=1080
+window/size/resizable=false
 
 [input]
 
@@ -26,6 +32,11 @@ cancel={
 "events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":2,"pressed":false,"doubleclick":false,"script":null)
  ]
 }
+
+[layer_names]
+
+2d_physics/layer_10="GroundLayer"
+2d_physics/MossgrowthLayer_1=false
 
 [physics]
 
