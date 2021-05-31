@@ -8,17 +8,26 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "KinematicBody2D",
+"class": "Enemy",
+"language": "GDScript",
+"path": "res://Scenes/EnemyBasic.gd"
+} ]
+_global_script_class_icons={
+"Enemy": ""
+}
+
 [application]
 
 config/name="GameJamProject"
-run/main_scene="res://Scenes/TutAfterEffects.tscn"
+run/main_scene="res://Scenes/Tile_set.tscn"
 config/icon="res://icon.png"
 
 [display]
 
 window/size/width=1920
 window/size/height=1080
-window/size/resizable=false
 
 [input]
 
@@ -35,8 +44,11 @@ cancel={
 
 [layer_names]
 
+2d_physics/layer_6="Enemy"
 2d_physics/layer_10="GroundLayer"
-2d_physics/MossgrowthLayer_1=false
+2d_physics/layer_11="LeftOver"
+2d_physics/layer_15="Player"
+2d_physics/layer_16="Interactables"
 
 [physics]
 
@@ -44,5 +56,8 @@ common/enable_pause_aware_picking=true
 
 [rendering]
 
+2d/snapping/use_gpu_pixel_snap=true
+quality/filters/anisotropic_filter_level=1
 environment/default_clear_color=Color( 0, 0, 0, 1 )
+quality/filters/use_fxaa=true
 environment/default_environment="res://default_env.tres"

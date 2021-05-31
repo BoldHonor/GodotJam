@@ -1,7 +1,37 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Level_asset/sherina-keser-avalondeko.png" type="Texture" id=1]
+[ext_resource path="res://crystal.gd" type="Script" id=2]
+[ext_resource path="res://Sprites/Effects/GodRays.tres" type="SpriteFrames" id=3]
+[ext_resource path="res://crysparent.gd" type="Script" id=4]
 
-[node name="crystal" type="Sprite"]
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 362.65, 346.018 )
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource( 4 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( -210.768, -37.0696 )
+scale = Vector2( 6.24935, 3.59805 )
+frames = ExtResource( 3 )
+frame = 13
+playing = true
+
+[node name="crystal" type="Sprite" parent="."]
 position = Vector2( -266.683, -139.691 )
 texture = ExtResource( 1 )
+script = ExtResource( 2 )
+
+[node name="Area2D" type="Area2D" parent="crystal"]
+collision_layer = 32768
+collision_mask = 16384
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="crystal/Area2D"]
+visible = false
+shape = SubResource( 1 )
+
+[node name="Tween" type="Tween" parent="."]
+
+[connection signal="body_entered" from="crystal/Area2D" to="crystal" method="_on_Area2D_body_entered"]
+[connection signal="tween_completed" from="Tween" to="." method="_on_Tween_tween_completed"]

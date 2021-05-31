@@ -24,6 +24,8 @@ var launch_direction :Vector2
 var prepare_launch : bool = false
 var initial_scale :float 
 var channel_effect :Light2D
+var health_bar : TextureProgress
+
 #tempvariables
 var initial_point : Vector2
 # Called when the node enters the scene tree for the first time.
@@ -34,11 +36,13 @@ func _ready():
 	ProjectileScene = preload("res://Scenes//LaunchSprite.tscn")
 	retainer_layer = $RetainerLayer
 	channel_effect = MainPlayer.get_node("Light2D")
+	health_bar =$Camera2D/Camera2D/Node2D/HealthBar
 	pass # Replace with function body.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	health_bar.value = MainPlayer.health
 	
 	if Input.is_action_just_pressed("aim"):
 		print("creating")
@@ -117,12 +121,18 @@ func launch():
 	previous_player.get_node("AnimatedSprite2").queue_free()
 	previous_player.start_tween()
 	channel_effect = MainPlayer.get_node("Light2D")
+	MainPlayer.health = previous_player.health
+	MainPlayer.keys = previous_player.keys
+	MainPlayer.parts = previous_player.parts
+	previous_player.damage *= previous_player.mass
+	previous_player.collision_layer =1024
 	pass
 #end launch functon ***********************************************************************************************
 
 
 func charge(delta =1 ):
 	if(!prepare_launch || FollowNode == null):
+		channel_effect.stop()
 		return
 		
 	launch_direction  = get_node("Camera2D").get_local_mouse_position() -initial_point
@@ -138,3 +148,6 @@ func charge(delta =1 ):
 	if Projectile.scale.x *FollowNode.scale.x  > MIN_SCALE:
 		get_node("Camera2D/TextureRect").change_color()
 	pass
+
+
+ # Replace with function body.

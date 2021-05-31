@@ -22,7 +22,16 @@ var move_right_timer :Timer
 var move_left_timer :Timer
 var ref_node :Node2D
 var area :Area2D
+
 onready var tween_values = [Color(1,1,1, 1),Color(0.54, 0.21, 0.12, 1)]
+
+
+#player properties 
+var health = 100 
+var damage =40
+
+var keys =[]
+var parts =[]
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -38,6 +47,9 @@ func _ready():
 func _process(delta):
 	if area.get_overlapping_bodies().size() >0:
 		can_grow =true
+	
+	
+	
 	pass
 	
 func _physics_process(delta):
@@ -138,3 +150,16 @@ func _on_MoveRightTimer_timeout():
 func _on_MoveLeftTimer_timeout():
 	can_move_left =true
 	pass # Replace with function body.
+	
+	
+func take_damage(dam):
+	health = health - dam
+	print(health)
+	
+func accquire_keys(number):
+	keys.append(number)
+	print(keys)
+	
+func find_key(number) : 
+	return keys.find(number)
+	

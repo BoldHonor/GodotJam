@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Main scene.gd" type="Script" id=2]
@@ -7,6 +7,8 @@
 [ext_resource path="res://Scenes/TextureRect.gd" type="Script" id=5]
 [ext_resource path="res://Camera2D.gd" type="Script" id=6]
 [ext_resource path="res://Sprites/background/green.png" type="Texture" id=7]
+[ext_resource path="res://Sprites/Character/Effects/health bar under.png" type="Texture" id=8]
+[ext_resource path="res://Sprites/Character/Effects/health bar.png" type="Texture" id=9]
 
 [sub_resource type="ShaderMaterial" id=1]
 resource_local_to_scene = true
@@ -58,7 +60,7 @@ playback/speed = 10.0
 
 [node name="Camera2D" type="Camera2D" parent="Camera2D"]
 current = true
-zoom = Vector2( 2, 2 )
+zoom = Vector2( 1.5, 1.5 )
 smoothing_speed = 10.0
 offset_h = 0.66
 drag_margin_left = 0.36
@@ -68,10 +70,27 @@ drag_margin_bottom = 0.09
 editor_draw_drag_margin = true
 
 [node name="green" type="Sprite" parent="Camera2D/Camera2D"]
-position = Vector2( -28.5263, -55.827 )
-scale = Vector2( 2.43392, 2.20313 )
+position = Vector2( 226.32, 6.46869 )
+scale = Vector2( 1.79302, 1.49348 )
 z_index = -1
 texture = ExtResource( 7 )
+
+[node name="Node2D" type="Node2D" parent="Camera2D/Camera2D"]
+z_index = 3
+z_as_relative = false
+
+[node name="HealthBar" type="TextureProgress" parent="Camera2D/Camera2D/Node2D"]
+margin_left = -854.66
+margin_top = -589.337
+margin_right = -602.66
+margin_bottom = -545.337
+rect_scale = Vector2( 2.58267, 1.56267 )
+value = 90.0
+texture_under = ExtResource( 8 )
+texture_progress = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="RetainerLayer" type="Node2D" parent="."]
 __meta__ = {
