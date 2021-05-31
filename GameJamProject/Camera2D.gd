@@ -15,6 +15,6 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	
-	global_position = player.global_position
+	if(is_instance_valid(player)):
+		global_position = player.global_position
 	pass

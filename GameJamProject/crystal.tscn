@@ -15,7 +15,7 @@ script = ExtResource( 4 )
 position = Vector2( -210.768, -37.0696 )
 scale = Vector2( 6.24935, 3.59805 )
 frames = ExtResource( 3 )
-frame = 13
+frame = 5
 playing = true
 
 [node name="crystal" type="Sprite" parent="."]

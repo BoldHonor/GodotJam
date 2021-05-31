@@ -7,7 +7,7 @@
 extents = Vector2( 51.8461, 270.657 )
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 16.0946, 120.741 )
+extents = Vector2( 9.67272, 120.741 )
 
 [node name="Gate-1" type="KinematicBody2D"]
 position = Vector2( -0.997284, 0.152222 )

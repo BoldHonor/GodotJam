@@ -22,12 +22,13 @@ var move_right_timer :Timer
 var move_left_timer :Timer
 var ref_node :Node2D
 var area :Area2D
+var checkPoint : Node2D
 
 onready var tween_values = [Color(1,1,1, 1),Color(0.54, 0.21, 0.12, 1)]
 
 
 #player properties 
-var health = 100 
+var health = 100
 var damage =40
 
 var keys =[]
@@ -40,6 +41,7 @@ func _ready():
 	move_right_timer =$MoveRightTimer
 	ref_node =$Node2D
 	area =$Area2D
+	checkPoint = get_parent().get_parent()
 	pass # Replace with function body.
 
 
@@ -154,7 +156,9 @@ func _on_MoveLeftTimer_timeout():
 	
 func take_damage(dam):
 	health = health - dam
-	print(health)
+	
+	if(health <=0 ):
+		get_parent().goto_checkpoint()
 	
 func accquire_keys(number):
 	keys.append(number)

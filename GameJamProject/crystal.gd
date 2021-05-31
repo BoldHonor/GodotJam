@@ -1,6 +1,6 @@
 extends Sprite
 
-export (int) var KeyNumber=1
+
 
 # Declare member variables here. Examples:
 # var a = 2
@@ -19,7 +19,7 @@ func _ready():
 
 func _on_Area2D_body_entered(body):
 	if (body.collision_layer == 16384):
-		body.accquire_keys(KeyNumber)
+		body.accquire_keys(get_parent().KeyNumber)
 		queue_free()
 		var tween = get_node("../Tween")
 		tween.interpolate_property(get_node("../AnimatedSprite"),"scale",get_node("../AnimatedSprite").scale,Vector2(0,0),1,Tween.TRANS_LINEAR)

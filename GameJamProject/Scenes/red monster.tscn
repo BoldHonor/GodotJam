@@ -126,103 +126,103 @@ flags = 4
 atlas = ExtResource( 1 )
 region = Rect2( 744, 850, 248, 170 )
 
-[sub_resource type="AtlasTexture" id=28]
+[sub_resource type="AtlasTexture" id=25]
 flags = 4
 atlas = ExtResource( 5 )
 region = Rect2( 0, 0, 248, 170 )
 
-[sub_resource type="AtlasTexture" id=29]
+[sub_resource type="AtlasTexture" id=26]
 flags = 4
 atlas = ExtResource( 5 )
 region = Rect2( 248, 0, 248, 170 )
 
-[sub_resource type="AtlasTexture" id=30]
+[sub_resource type="AtlasTexture" id=27]
 flags = 4
 atlas = ExtResource( 5 )
 region = Rect2( 496, 0, 248, 170 )
 
-[sub_resource type="AtlasTexture" id=31]
+[sub_resource type="AtlasTexture" id=28]
 flags = 4
 atlas = ExtResource( 5 )
 region = Rect2( 744, 0, 248, 170 )
 
-[sub_resource type="AtlasTexture" id=32]
+[sub_resource type="AtlasTexture" id=29]
 flags = 4
 atlas = ExtResource( 5 )
 region = Rect2( 0, 170, 248, 170 )
 
-[sub_resource type="AtlasTexture" id=33]
+[sub_resource type="AtlasTexture" id=30]
 flags = 4
 atlas = ExtResource( 5 )
 region = Rect2( 248, 170, 248, 170 )
 
-[sub_resource type="AtlasTexture" id=34]
+[sub_resource type="AtlasTexture" id=31]
 flags = 4
 atlas = ExtResource( 5 )
 region = Rect2( 496, 170, 248, 170 )
 
-[sub_resource type="AtlasTexture" id=35]
+[sub_resource type="AtlasTexture" id=32]
 flags = 4
 atlas = ExtResource( 5 )
 region = Rect2( 744, 170, 248, 170 )
 
-[sub_resource type="AtlasTexture" id=36]
+[sub_resource type="AtlasTexture" id=33]
 flags = 4
 atlas = ExtResource( 5 )
 region = Rect2( 0, 340, 248, 170 )
 
-[sub_resource type="AtlasTexture" id=37]
+[sub_resource type="AtlasTexture" id=34]
 flags = 4
 atlas = ExtResource( 5 )
 region = Rect2( 248, 340, 248, 170 )
 
-[sub_resource type="AtlasTexture" id=38]
+[sub_resource type="AtlasTexture" id=35]
 flags = 4
 atlas = ExtResource( 5 )
 region = Rect2( 496, 340, 248, 170 )
 
-[sub_resource type="AtlasTexture" id=39]
+[sub_resource type="AtlasTexture" id=36]
 flags = 4
 atlas = ExtResource( 5 )
 region = Rect2( 744, 340, 248, 170 )
 
-[sub_resource type="AtlasTexture" id=40]
+[sub_resource type="AtlasTexture" id=37]
 flags = 4
 atlas = ExtResource( 5 )
 region = Rect2( 0, 510, 248, 170 )
 
-[sub_resource type="AtlasTexture" id=41]
+[sub_resource type="AtlasTexture" id=38]
 flags = 4
 atlas = ExtResource( 5 )
 region = Rect2( 248, 510, 248, 170 )
 
-[sub_resource type="AtlasTexture" id=42]
+[sub_resource type="AtlasTexture" id=39]
 flags = 4
 atlas = ExtResource( 5 )
 region = Rect2( 496, 510, 248, 170 )
 
-[sub_resource type="AtlasTexture" id=43]
+[sub_resource type="AtlasTexture" id=40]
 flags = 4
 atlas = ExtResource( 5 )
 region = Rect2( 744, 510, 248, 170 )
 
-[sub_resource type="SpriteFrames" id=25]
+[sub_resource type="SpriteFrames" id=41]
 animations = [ {
 "frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 18 ), SubResource( 19 ), SubResource( 20 ), SubResource( 21 ), SubResource( 22 ), SubResource( 23 ), SubResource( 24 ) ],
 "loop": true,
 "name": "Fly",
 "speed": 15.0
 }, {
-"frames": [ SubResource( 28 ), SubResource( 29 ), SubResource( 30 ), SubResource( 31 ), SubResource( 32 ), SubResource( 33 ), SubResource( 34 ), SubResource( 35 ), SubResource( 36 ), SubResource( 37 ), SubResource( 38 ), SubResource( 39 ), SubResource( 40 ), SubResource( 41 ), SubResource( 42 ), SubResource( 43 ) ],
+"frames": [ SubResource( 25 ), SubResource( 26 ), SubResource( 27 ), SubResource( 28 ), SubResource( 29 ), SubResource( 30 ), SubResource( 31 ), SubResource( 32 ), SubResource( 33 ), SubResource( 34 ), SubResource( 35 ), SubResource( 36 ), SubResource( 37 ), SubResource( 38 ), SubResource( 39 ), SubResource( 40 ) ],
 "loop": false,
 "name": "Death",
 "speed": 15.0
 } ]
 
-[sub_resource type="CircleShape2D" id=26]
+[sub_resource type="CircleShape2D" id=42]
 radius = 18.6172
 
-[sub_resource type="CircleShape2D" id=27]
+[sub_resource type="CircleShape2D" id=43]
 radius = 60.0454
 
 [node name="RedMonster" type="KinematicBody2D"]
@@ -231,14 +231,14 @@ collision_mask = 16384
 script = ExtResource( 2 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-frames = SubResource( 25 )
+frames = SubResource( 41 )
 animation = "Fly"
-frame = 3
+frame = 22
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 15.1361, 22.2838 )
-shape = SubResource( 26 )
+shape = SubResource( 42 )
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 32
@@ -246,7 +246,7 @@ collision_mask = 17408
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2( 12.6399, 23.6186 )
-shape = SubResource( 27 )
+shape = SubResource( 43 )
 
 [node name="HealthBar" type="TextureProgress" parent="."]
 margin_left = -210.938

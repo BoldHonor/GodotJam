@@ -21,7 +21,7 @@ extents = Vector2( 48.1525, 46.747 )
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 207.251, 201.755 )
 
-[node name="Node2D" type="Node2D"]
+[node name="Node2D2" type="Node2D"]
 script = ExtResource( 10 )
 
 [node name="TileMap2" type="TileMap" parent="."]
@@ -77,6 +77,7 @@ shape = SubResource( 1 )
 [node name="RedMonster" parent="." instance=ExtResource( 9 )]
 position = Vector2( 3984.22, 343.169 )
 final_point = Vector2( 120, 0 )
+threshold = 15
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 32768

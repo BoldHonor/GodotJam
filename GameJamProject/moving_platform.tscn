@@ -1,11 +1,16 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Level_asset/moving_platform.png" type="Texture" id=1]
+[ext_resource path="res://moving_platform.gd" type="Script" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 111.065, 38.1218 )
 
 [node name="moving_platform" type="KinematicBody2D"]
+collision_layer = 512
+collision_mask = 16384
+script = ExtResource( 2 )
+MOVEMENT_SPEED_PLATFORM = 9000
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )

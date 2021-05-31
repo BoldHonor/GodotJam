@@ -1,7 +1,7 @@
 extends Node2D
 
 
-export (int) var part_number
+export (int) var part_number=1
 
 # Declare member variables here. Examples:
 # var a = 2

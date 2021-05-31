@@ -26,10 +26,11 @@ GROWTH = 1.001
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( -1.41064, -10.8137 )
+can_sleep = false
 
 [node name="BackBufferCopy" type="BackBufferCopy" parent="."]
 process_priority = -1
-z_index = -60
+z_index = -59
 z_as_relative = false
 copy_mode = 2
 

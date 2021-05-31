@@ -15,7 +15,7 @@ modulate = Color( 0.952941, 0.823529, 0.545098, 1 )
 position = Vector2( 32.7321, 65.7394 )
 scale = Vector2( 5.48891, 4.52668 )
 frames = ExtResource( 1 )
-frame = 77
+frame = 33
 playing = true
 
 [node name="gear1" type="Sprite" parent="."]

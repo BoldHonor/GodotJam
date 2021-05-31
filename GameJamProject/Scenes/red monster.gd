@@ -8,6 +8,7 @@ export (Vector2) var initial_point
 export (Vector2) var final_point
 export (int) var MOVEMENT_SPEED_ENEMY = 3000
 
+export (int)var threshold =0.05
 
 
 # Called when the node enters the scene tree for the first time.
@@ -30,7 +31,7 @@ func _process(delta):
 		anim.animation = "Death"
 		anim.connect("animation_finished",self,"die")
 		pass
-	if(abs((final_point - self.global_position).length())  < 2 ):
+	if(abs((final_point - self.global_position).length())  < threshold  ):
 		var  temp = final_point
 		final_point = initial_point
 		initial_point =temp

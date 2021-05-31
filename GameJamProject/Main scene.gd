@@ -37,6 +37,7 @@ func _ready():
 	retainer_layer = $RetainerLayer
 	channel_effect = MainPlayer.get_node("Light2D")
 	health_bar =$Camera2D/Camera2D/Node2D/HealthBar
+	health_bar.value =MainPlayer.health
 	pass # Replace with function body.
 
 
@@ -102,9 +103,9 @@ func launch():
 	channel_effect.queue_free()
 	
 	#launching
+	add_child(MainPlayer)
+	move_child(MainPlayer,0)
 	MainPlayer.global_position = Projectile.global_position
-	get_tree().get_root().add_child(MainPlayer)
-	get_tree().get_root().move_child(MainPlayer,0)
 	MainPlayer.change_scale(Projectile.scale*initial_scale)
 	var impulse_direction = (FollowNode.get_node("Position2D").global_position - FollowNode.global_position ).normalized()
 	MainPlayer.apply_central_impulse(impulse_direction * launch_power / MainPlayer.mass)
@@ -124,6 +125,7 @@ func launch():
 	MainPlayer.health = previous_player.health
 	MainPlayer.keys = previous_player.keys
 	MainPlayer.parts = previous_player.parts
+	MainPlayer.checkPoint =previous_player.checkPoint
 	previous_player.damage *= previous_player.mass
 	previous_player.collision_layer =1024
 	pass
@@ -140,6 +142,8 @@ func charge(delta =1 ):
 	if(Projectile.scale.x < MAX_SCALE && Projectile.scale.x * initial_scale < MAX_SCALE):
 		Projectile.scale.x += GROWTH*delta
 		Projectile.scale.y += GROWTH*delta
+		if !is_instance_valid(channel_effect):
+			channel_effect = MainPlayer.get_node("Light2D")
 		channel_effect.play()
 		MainPlayer.can_grow=false
 	else :
@@ -149,5 +153,24 @@ func charge(delta =1 ):
 		get_node("Camera2D/TextureRect").change_color()
 	pass
 
+func goto_checkpoint():
+	var pp = MainPlayer
+	MainPlayer = Player.instance()
+	call_deferred("add_child",MainPlayer)
+	move_child(MainPlayer,0)
+	MainPlayer.health = 100
+	MainPlayer.keys = pp.keys
+	MainPlayer.parts = pp.parts
+	MainPlayer.checkPoint =pp.checkPoint
+	MainPlayer.global_position = MainPlayer.checkPoint.global_position
+	global_position = Vector2(0,0)
+	$Camera2D.player = MainPlayer
+	pp.queue_free()
+	
 
  # Replace with function body.
+
+
+func _on_Area2D_body_entered(body):
+	goto_checkpoint()
+	pass # Replace with function body.

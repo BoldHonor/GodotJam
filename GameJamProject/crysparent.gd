@@ -1,5 +1,5 @@
 extends Node2D
-
+export (int) var KeyNumber=1
 
 # Declare member variables here. Examples:
 # var a = 2

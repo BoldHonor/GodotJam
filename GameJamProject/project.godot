@@ -21,7 +21,7 @@ _global_script_class_icons={
 [application]
 
 config/name="GameJamProject"
-run/main_scene="res://Scenes/Tile_set.tscn"
+run/main_scene="res://Scenes/Entry.tscn"
 config/icon="res://icon.png"
 
 [display]
@@ -47,6 +47,7 @@ cancel={
 2d_physics/layer_6="Enemy"
 2d_physics/layer_10="GroundLayer"
 2d_physics/layer_11="LeftOver"
+2d_physics/layer_14="PlayerDamageBox"
 2d_physics/layer_15="Player"
 2d_physics/layer_16="Interactables"
 

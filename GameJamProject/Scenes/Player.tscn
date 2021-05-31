@@ -149,7 +149,7 @@ position = Vector2( 8, -40 )
 scale = Vector2( 5, 5 )
 frames = SubResource( 9 )
 animation = "idle"
-frame = 4
+frame = 2
 playing = true
 __meta__ = {
 "_edit_lock_": true
@@ -217,6 +217,13 @@ one_shot = true
 [node name="SolidifyTime" type="Timer" parent="."]
 wait_time = 0.6
 one_shot = true
+
+[node name="Area2D2" type="Area2D" parent="."]
+collision_layer = 8192
+collision_mask = 32768
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D2"]
+polygon = PoolVector2Array( 0.366364, 44.1178, -44.5264, 20.2997, -45.64, -24.4679, 0.241249, -31.5951, 47.4589, -19.3452, 49.018, 27.2042 )
 
 [connection signal="timeout" from="JumpTmer" to="." method="_on_Timer_timeout"]
 [connection signal="timeout" from="MoveRightTimer" to="." method="_on_MoveRightTimer_timeout"]
